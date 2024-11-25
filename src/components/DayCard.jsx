@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUp } from 'lucide-react'
 import { getWeatherIcon } from '@/lib/getWeatherIcon'
 
 export default function DayCard({ day, weatherType, temp, minTemp, maxTemp }) {
+  console.log('Weather Type:', weatherType)
   return (
     <Card className="bg-white/50 backdrop-blur-sm">
       <CardContent className="p-4 text-center">

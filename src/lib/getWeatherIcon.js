@@ -1,12 +1,23 @@
-import { Sun, Cloud, CloudRain, Snowflake } from 'lucide-react'
+import { Sun, Cloud, CloudRain, Snowflake, CloudDrizzle } from 'lucide-react'
 
 export function getWeatherIcon(type) {
+  console.log('Icon type received:', type)
   
-  if (type === "clear") return <Sun size={128} color="#FACC15" />
-  if (type === "cloudy") return <Cloud size={128} color="#9CA3AF" />
-  if (type === "rainy") return <CloudRain size={128} color="#60A5FA" />
-  if (type === "snowy") return <Snowflake size={128} color="#BFDBFE" />
-  return null
+  switch (type) {
+    case "clear":
+      return <Sun size={48} color="#FACC15" />
+    case "clouds":
+      return <Cloud size={48} color="#9CA3AF" />
+    case "rain":
+      return <CloudRain size={48} color="#60A5FA" />
+    case "snow":
+      return <Snowflake size={48} color="#BFDBFE" />
+    case "drizzle":
+      return <CloudDrizzle size={48} color="#60A5FA" />
+    default:
+      console.log('No matching icon for type:', type)
+      return <Cloud size={48} color="#9CA3AF" />
+  }
 }
 
 
