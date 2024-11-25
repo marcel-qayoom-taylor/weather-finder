@@ -7,6 +7,9 @@ export default function WeatherDisplay({ city, currentWeather, forecast }) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  const nice = JSON.stringify(currentWeather)
+  console.log("received and passing ", nice)
+
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Weather in {capitalizeFirstLetter(city)}</h1>

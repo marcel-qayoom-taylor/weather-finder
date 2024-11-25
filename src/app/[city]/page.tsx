@@ -23,6 +23,8 @@ export default async function Page({
       getFiveDayForecast(city)
     ])
 
+    console.log("Current weather", currentWeather)
+
     return (
       <div className="container mx-auto p-4">
         <SearchForm />
