@@ -2,13 +2,9 @@ import CurrentWeather from './CurrentWeather'
 import DailyForecast from './DailyForecast'
 
 export default function WeatherDisplay({ city, currentWeather, forecast }) {
-
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
-
-  const nice = JSON.stringify(currentWeather)
-  console.log("received and passing ", nice)
 
   return (
     <div className="space-y-6">

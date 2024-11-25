@@ -26,7 +26,8 @@ export default async function Page({
     console.log("Current weather", currentWeather)
 
     return (
-      <div className="container mx-auto p-4">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500">
+      <div className="bg-white rounded-lg shadow-lg p-6">
         <SearchForm />
         <WeatherDisplay 
           city={city}
@@ -34,14 +35,15 @@ export default async function Page({
           forecast={fiveDayForecast}
         />
       </div>
+    </div>
     )
   } catch (error) {
-    // return (
-    //   <div className="container mx-auto p-4">
-    //     <p className="text-red-500">
-    //       Error loading weather data for {city}: {error.message}
-    //     </p>
-    //   </div>
-    // )
+    return (
+      <div className="container mx-auto p-4">
+        <p className="text-red-500">
+          Error loading weather data for {city}
+        </p>
+      </div>
+    )
   }
 }
