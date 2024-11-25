@@ -1,7 +1,12 @@
-import { getWeatherIcon } from "@/lib/getWeatherIcon"
-
-export default function CurrentWeather({current}) {
-  console.log("CURRENT:", current )
+export default function CurrentWeather({ current }: { current: any }) {
+  // Add error handling for when current is undefined
+  if (!current || !current.main) {
+    return (
+      <div className="text-center p-4">
+        <p>Loading weather data...</p>
+      </div>
+    )
+  }
 
   // Convert Kelvin to Celsius
   const tempInCelsius = Math.round(current.main.temp - 273.15)
@@ -14,9 +19,9 @@ export default function CurrentWeather({current}) {
 
   return (
     <div className="text-center">
-      <div className="flex justify-center mb-4 ">
-        {getWeatherIcon(current.weather[0].main.toLowerCase())}
-      </div>
+      {/* <div className="flex justify-center mb-4">
+        {getWeatherIcon(current.weather[0].main)}
+      </div> */}
       <h2 className="text-4xl font-bold mb-2">{tempInCelsius}°C</h2>
       <p className="text-xl mb-4 capitalize">{weatherType}</p>
       <div className="grid grid-cols-2 gap-4">

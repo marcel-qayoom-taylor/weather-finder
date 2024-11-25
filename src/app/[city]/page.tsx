@@ -2,6 +2,7 @@ import 'dotenv/config'
 import getCurrentWeather from '@/lib/getCurrentWeather'
 import getFiveDayForecast from '@/lib/getFiveDayForecast'
 import WeatherDisplay from '@/components/WeatherDisplay'
+import SearchForm from '@/components/SearchForm'
 
 export default async function Page({
   params,
@@ -9,7 +10,7 @@ export default async function Page({
   params: Promise<{ city: string }>
 }) {
   const apiKey = process.env.OPENWEATHERMAP_API_KEY
-  
+
   if (!apiKey) {
     throw new Error('Missing OPENWEATHERMAP_API_KEY in environment variables')
   }
@@ -17,7 +18,6 @@ export default async function Page({
   const city = (await params).city
   
   try {
-    // Fetch all weather data
     const [currentWeather, fiveDayForecast] = await Promise.all([
       getCurrentWeather(city),
       getFiveDayForecast(city)
@@ -25,6 +25,7 @@ export default async function Page({
 
     return (
       <div className="container mx-auto p-4">
+        <SearchForm />
         <WeatherDisplay 
           city={city}
           currentWeather={currentWeather}
