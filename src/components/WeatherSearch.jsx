@@ -21,7 +21,7 @@ export default function WeatherSearch() {
     <Card className="w-full max-w-md transition-all duration-300 ease-in-out">
       <CardHeader>
         <CardTitle className="text-3xl font-bold text-center text-primary">
-          Weather Wonder
+          Weather Finder
         </CardTitle>
       </CardHeader>
       <CardContent>
