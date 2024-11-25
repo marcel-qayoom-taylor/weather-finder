@@ -8,6 +8,11 @@ export default function Home() {
   const [city, setCity] = useState('');
   const router = useRouter();
 
+  const apiKey = process.env.OPENWEATHERMAP_API_KEY;
+  if (!apiKey) {
+    throw new Error('Missing OPENWEATHERMAP_API_KEY in environment variables');
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (city) {

@@ -1,4 +1,6 @@
 import 'dotenv/config'
+import getCurrentWeather from '@/lib/getCurrentWeather'
+import getFiveDayForecast from '@/lib/getFiveDayForecast';
 
 export default async function Page({
   params,
@@ -12,19 +14,17 @@ export default async function Page({
   }
   const city = (await params).city
 
-  let geocodeResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`)
-  let geocode = await geocodeResponse.json()
-  let lat = geocode[0]?.lat
-  let lon = geocode[0]?.lon
-  let currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-  let currentWeather = await currentWeatherResponse.json()
+  let currentWeather = await getCurrentWeather(city)
   let nice = JSON.stringify(currentWeather)
+
+  let fiveDay = await getFiveDayForecast(city)
+  let fiveDayNice = JSON.stringify(fiveDay)
+
   return (
     <div>
       <p>My Post: {city}</p>
-      <p>Lat is: {lat}</p>
-      <p>Long is: {lon}</p>
       <p>weather is: {nice}</p>
+      {/* <p>five day is: ${fiveDayNice}</p> */}
       </div>
     )
 }
